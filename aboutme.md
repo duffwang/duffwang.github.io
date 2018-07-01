@@ -11,5 +11,5 @@ I'm Duff Wang, who sometimes goes by Jeff. I'm a quantitative trader and analyst
 
 ## Education
 
-B.S.E. Chemical and Biological Engineering
+B.S.E. Chemical and Biological Engineering<br>
 Princeton University, June 2013
