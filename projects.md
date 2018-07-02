@@ -10,7 +10,7 @@ I used a publically available dataset to analyse home loan trends from the year 
 
 [Interactive Report](https://duffwang.shinyapps.io/homeloananalysis/)
   
-Note: Because it is an interactive report, it will take a minute or so to load all the data.  
+Note: Because it is an interactive report using a large dataset, it may take a minute or so to load.  
   
 [Project Source Files](https://github.com/duffwang/HomeLoanAnalysis)
 
