@@ -1,6 +1,6 @@
 ---
 layout: post
-title: First post!
+title: Welcome to my personal site!
 ---
 
 More to come.
