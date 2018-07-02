@@ -1,0 +1,311 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"next",
+				"next"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "packa",
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"Pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/jeffwang/Documents/git/duffwang.github.io"
+	],
+	"file_history":
+	[
+		"/Users/jeffwang/Documents/git/duffwang.github.io/css/main.css",
+		"/Users/jeffwang/Documents/git/duffwang.github.io/404.html",
+		"/Users/jeffwang/Documents/git/duffwang.github.io/_includes/header.html",
+		"/Users/jeffwang/Documents/git/duffwang.github.io/index.html",
+		"/Users/jeffwang/Documents/git/duffwang.github.io/_includes/footer.html",
+		"/Users/jeffwang/Documents/git/duffwang.github.io/projects.md",
+		"/Users/jeffwang/Documents/git/duffwang.github.io/aboutme.md",
+		"/Users/jeffwang/Documents/git/duffwang.github.io/_posts/2015-01-04-first-post.md",
+		"/Users/jeffwang/Documents/git/duffwang.github.io/_config.yml",
+		"/Users/jeffwang/Downloads/info.php",
+		"/Users/jeffwang/Downloads/Divi Theme Wordpress 2017 Elegantthemes Nulled v3.0.40/Divi/index.php",
+		"/Users/jeffwang/Downloads/spnati.gitlab-1.io-master-5c4de4d96762812b044b68f994091ee00acc5012/js/spniGallery.js",
+		"/Users/jeffwang/Downloads/spnati.gitlab.io-master-5c4de4d96762812b044b68f994091ee00acc5012/unlock_spnati_endings.js",
+		"/Users/jeffwang/Documents/git/fc/faking-contributions.py",
+		"/Users/jeffwang/Documents/git/duffwang.github.io/fc/faking-contributions.py",
+		"/Users/jeffwang/Documents/git/ProductSearcher/test.js",
+		"/Users/jeffwang/Documents/cluster/biphasic_gravity/isotherm_grav_1.0_0.1.txt",
+		"/Users/jeffwang/Documents/cluster/biphasic_gravity_custom/water_wall2.gro",
+		"/Users/jeffwang/Documents/cluster/biphasic_gravity_custom/em.gro",
+		"/Users/jeffwang/Documents/cluster/biphasic_gravity/equil.gro",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/gibbs_isotherm.cpp",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/oilwater_wateronly.gro",
+		"/Users/jeffwang/Documents/cluster/packmol/octane_single.pdb",
+		"/Users/jeffwang/Documents/cluster/packmol/freeze_single.pdb",
+		"/Users/jeffwang/Documents/cluster/packmol/freeze_single.gro",
+		"/Users/jeffwang/Documents/cluster/packmol/wall_single.pdb",
+		"/Users/jeffwang/Documents/cluster/packmol/wall_single.gro",
+		"/Users/jeffwang/Documents/cluster/packmol/water_wall.pdb",
+		"/Users/jeffwang/Documents/cluster/packmol/water_wall.gro",
+		"/Users/jeffwang/Documents/cluster/packmol/water_wall.inp",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/gibbs_isotherm",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/isotherm_exclusion_0.1.txt",
+		"/Users/jeffwang/Documents/cluster/biphasic/gibbs_isotherm.cpp",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/n_analysis.cpp",
+		"/Users/jeffwang/Documents/cluster/biphasic/run.mdp",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/run.mdp",
+		"/Users/jeffwang/Documents/cluster/sftp-config.json",
+		"/Users/jeffwang/Documents/cluster/packmol/oilwater.pdb",
+		"/Users/jeffwang/Library/Application Support/Sublime Text 3/Packages/User/cpp_lab_run.sublime-build",
+		"/Users/jeffwang/Documents/cluster/analysis/csv_save.cpp",
+		"/Users/jeffwang/Documents/cluster/biphasic/Analysis/cube_length_1_edge_0.3.txt",
+		"/Users/jeffwang/Documents/cluster/biphasic/n_analysis.cpp",
+		"/Users/jeffwang/Library/Application Support/Sublime Text 3/Packages/User/cpp_lab.sublime-build",
+		"/Users/jeffwang/Documents/cluster/biphasic/Analysis/n_distribution.R",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/com.cpp",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/n_analysis",
+		"/Users/jeffwang/Library/Application Support/Sublime Text 3/Packages/User/cpp.sublime-build",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil2/n_analysis.cpp",
+		"/Users/jeffwang/Documents/cluster/biphasic/n_analysis_edge_1nm.txt",
+		"/Users/jeffwang/Library/Application Support/Sublime Text 3/Packages/User/cxdr_dontrun.sublime-build",
+		"/Users/jeffwang/Documents/cluster/biphasic/n_analysis_edge_.5_.5_1.0.txt",
+		"/Users/jeffwang/Documents/cluster/biphasic/n_analysis_water_edge_1nm.txt",
+		"/Users/jeffwang/Documents/analysis/csv_save.cpp",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/oilwater.top",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/oilwater.gro",
+		"/Users/jeffwang/Documents/cluster/GMXLIB/oplsaa.ff/ethanol.itp",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/small_testcase.gro",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/em.mdp",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/oil.top",
+		"/Users/jeffwang/Documents/cluster/biphasic_oil/oilwater.pdb",
+		"/Users/jeffwang/Documents/md/cbe525/assignment4_nvt.cpp",
+		"/Users/jeffwang/Documents/md/cbe525/mc-nvt-basic.cpp",
+		"/Users/jeffwang/Documents/md/biphasic_oil/water_single.gro",
+		"/Users/jeffwang/Documents/md/biphasic_oil/water.gro",
+		"/Users/jeffwang/Documents/md/biphasic_oil/octane_slab2.gro",
+		"/Users/jeffwang/Documents/md/biphasic_oil/oil.top",
+		"/Users/jeffwang/Documents/md/biphasic_oil/oil_water.gro",
+		"/Users/jeffwang/Documents/md/biphasic/water.top",
+		"/Users/jeffwang/Documents/md/biphasic_oil/em.mdp",
+		"/Users/jeffwang/Documents/md/biphasic_oil/small_testcase.gro",
+		"/Users/jeffwang/Documents/md/biphasic_oil/octane_water_new_solvated2.gro",
+		"/Users/jeffwang/Documents/md/biphasic_oil/wateroil.top",
+		"/Users/jeffwang/Documents/md/biphasic_oil/run.mdp",
+		"/Users/jeffwang/Documents/md/Feb_Methane/em.mdp",
+		"/Users/jeffwang/Documents/md/Feb_Methane/run.mdp",
+		"/Users/jeffwang/Documents/md/biphasic_oil/oil.gro",
+		"/Users/jeffwang/Documents/md/analysis/csv_save.cpp",
+		"/Users/jeffwang/Documents/md/analysis/readxtc.cpp",
+		"/Users/jeffwang/Documents/Work/Read XTC files/readxtc.cpp",
+		"/Users/jeffwang/Documents/prep/testing.cpp",
+		"/Users/jeffwang/Documents/prep/mindifferencetwoarrays.cpp",
+		"/Users/jeffwang/Documents/DCE Scripts/ShinyApps/dce/od_pjm_ftr/AutoForecaster/global.R",
+		"/Users/jeffwang/Documents/DCE Scripts/ShinyApps/dce/od_pjm_ftr/AutoForecaster/server.R",
+		"/Users/jeffwang/Documents/DCE Scripts/ShinyApps/dce/od_pjm_ftr/AutoForecaster/ui.R",
+		"/Users/jeffwang/Documents/Cap/README.md",
+		"/Users/jeffwang/Documents/md/cbe525/sim1.cpp",
+		"/Users/jeffwang/Documents/md/cbe525/pset3-md-nve-empty.cpp",
+		"/Users/jeffwang/Documents/md/biphasic/n_analysis.cpp",
+		"/Users/jeffwang/Documents/md/cbe525/sim1input.dat",
+		"/Users/jeffwang/Documents/Work/Read XTC files/gromacs_tutorial_analysis.cpp",
+		"/Users/jeffwang/Documents/Work/Read XTC files/gromacs_tutorial.cpp",
+		"/Users/jeffwang/Dropbox/Important Documents/Older Files/Mtgmaster Screencaps/priv(32).php",
+		"/Users/jeffwang/Dropbox/Important Documents/Older Files/Mtgmaster Screencaps/priv(1).php",
+		"/Users/jeffwang/Dropbox/Important Documents/Older Files/Mtgmaster Screencaps/priv(2).php"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 311.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "Packages/User/cpp_lab_run.sublime-build",
+	"project": "githubpages.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Documents/md/cbe525/sim1.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Documents/cluster.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 286.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
