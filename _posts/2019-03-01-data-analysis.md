@@ -1,4 +1,4 @@
 ---
 layout: post
-title: Exploring a Home Mortgage Loan Dataset using R 
+title: How to Explore and Construct a Data Narrative, Regression Analysis in R
 ---
