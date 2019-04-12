@@ -3,10 +3,10 @@ layout: post
 title: Tutorial on Data Cleaning and Transformation using R
 ---
 
-##Data Description
+## Data Description
 To demonstrate proper data cleaning (also known as data munging) and transfomation (or data mapping), we will be working with a [publically available](https://www.ffiec.gov/hmda/hmdaflat.htm) dataset on Home Mortgage Loans. The dataset was generated in compliance with the Home Mortgage Disclosure Act of 1975, which requires disclosures on the originations and purchases of home purchase, improvement, and refinancing loans. The 2012-2014 data used in this report has been filtered to five states (MD, VA, WV, DC, DE) and to 1-4 family, owner-occupied home loans, with an originated action type, secured by a first or subordinate lien.
 
-###Data Sanity Check: Loan Amount
+### Data Sanity Check: Loan Amount
 First, we turn out attention to the loan amount column. We want to look for any spurious data points. The magnitude of loan amounts may vary for different properties, but they should not be drastically more than the median income of the applicant. We will look at each respondent and calculate their average loan to income ratio. 
 
 One notable outlier comes from **Megachange Financial**, a company that gave out loans with loan to median income ratios that were three orders of magnitude larger than any other lender, as shown in **Figure 1** with the outlier highlighted in red. The average loan to income ratio for this firm was around 1000, while the second highest was at only around 10. Megachange loans are in the range of tens of millions of dollars, with typical median income less than $100k.
@@ -21,7 +21,7 @@ As a future quality check rule, I would implement a check for any respondent wit
 
 
 
-###Data Mapping: Respondent Name
+### Data Mapping: Respondent Name
 
 Next, the respondent name field suffers from typos or slight formatting changes, causing a single respondent to be listed multiple times under different names.
 
@@ -126,7 +126,7 @@ In the future, I would use the rules implemented above, as well as **propose a m
 
 
 
-###Data Mapping: Metropolitan Area
+### Data Mapping: Metropolitan Area
 The third column we'll do a quality check on is the metropolitan area. Firstly, everything is in uppercase, but we would prefer to get it in a normal mixed case format. Because the entries are in address format (e.g. **Richmond, VA**) we write a custom function to convert these names to mixed case.
 
 It would take a long time to run our function on every single row in the table, as the case changing function does not natively take advantage of R's 'vectorized' functionality. Instead, we'll create a **separate mapping table**, going from MSA/MD id to a cleaned up version of the name.
