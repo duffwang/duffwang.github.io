@@ -17,7 +17,7 @@ As these loans account for less than **0.1%** of all loans in our dataset, are p
 
 As a future quality check rule, I would implement a check for any respondent with an average loan to income **ratio greater than 20**. I chose this threshold because our dataset shows every other firm has such a ratio firmly below 20, and that threshold should capture any obvious outliers such as Megachange Mortgage.
 
-<img src="/img/outlier-1.png" width="250px"/>
+<img src="/img/outlier-1.png" width="750px"/>
 
 
 
