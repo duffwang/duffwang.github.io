@@ -1,4 +1,4 @@
 ---
 layout: post
-title: Machine Learning with Supervised Learning Algorithms
+title: Comparison of Supervised Machine Learning Algorithms
 ---
