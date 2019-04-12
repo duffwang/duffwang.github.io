@@ -1,1 +1,4 @@
-##Unsupervised Learning
+---
+layout: post
+title: Unsupervised Learning Algorithms
+---

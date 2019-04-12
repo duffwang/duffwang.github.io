@@ -1,1 +1,4 @@
-placeholder
+---
+layout: post
+title: Randomized Optimization
+---
