@@ -8,7 +8,7 @@ subtitle: Quantitative trader, data enthusiast
 
 ## About Me
 
-I'm Duff Wang, who also sometimes goes by Jeff! I'm a quantitative trader and analyst who loves using statistics to make data-driven decisions. I am currently an equity options market maker located in San Francisco.
+Welcome! I'm a quantitative trader and analyst who loves using statistics to make data-driven decisions. I am currently an equity options market maker located in San Francisco.
 
 ## Education
 
