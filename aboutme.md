@@ -8,7 +8,7 @@ subtitle: Quantitative trader, data enthusiast
 
 ## About Me
 
-Welcome! I'm a quantitative trader and analyst who loves using statistics to make data-driven decisions. I am currently an equity options market maker located in San Francisco.
+Welcome! I'm a finance professional, data analyst, and software developer who loves using statistics to make data-driven decisions. I am currently an equity options market maker located in San Francisco.
 
 ## Education
 
