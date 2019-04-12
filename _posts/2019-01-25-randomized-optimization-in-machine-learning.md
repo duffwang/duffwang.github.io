@@ -1,4 +1,4 @@
 ---
 layout: post
-title: Randomized Optimization
+title: Randomized Optimization using the ABAGAIL Java Library
 ---
