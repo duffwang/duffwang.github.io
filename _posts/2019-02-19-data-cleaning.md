@@ -118,49 +118,6 @@ hmda_init <- function(chr.file.loans = "2012_to_2014_loans_data", chr.file.insti
 
   return(dt.loans)
 }
-
-#' This function takes the data table returned by hdma_init and exports it as a JSON file
-#'
-#' @param data data.table containing loan and institution information
-#' @param states (optional) character vector of 2 letter state abbreviations to filter by
-#' @param conventional_conforming (optional) logical TRUE will filter loans to conventional, conforming loans. FALSE returns all other loans. Leave as NA to include all loans.
-#' @param chr.output.file Filename of the exported JSON file, written with ".json" file extension. Default is "hdma"
-#' 
-#' @return \code{TRUE}
-#'
-#' @author Duff Wang
-#'
-hmda_to_json <- function(data, states = NA, conventional_conforming = NA, chr.output.file = "hdma") {
-  #Input checks
-  if (!any(grepl("data.table", class(data)))) { stop("Expecting a data.table. Check your input data") }
-  dt.input <- data 
-  
-  #Ensures states is in right format if provided
-  if (length(states) == 1 && !is.na(states)) {
-    if (class(states) != "character") { stop("states must be a character vector") }
-    if (any(nchar(states) != 2)) { stop("States must contain two character abbreviations") }
-  }
-  
-  #Ensures conventional_conforming is in right format if provided
-  if (length(conventional_conforming) > 1) { stop("conventional_conforming must be a single value") }
-  if (!is.na(conventional_conforming) && class(conventional_conforming) != "logical") {
-     stop("conventional_conforming must be a logical vector") 
-  }
-
-  #Subset the data accordingly
-  if (length(states) != 1 || !is.na(states)) {
-    dt.input <- dt.input[state.short %chin% states]  #%chin% is much faster than %in%
-  }
-  if (!is.na(conventional_conforming)) {
-    dt.input <- dt.input[(status.conventional.conforming == 'Y') == conventional_conforming] 
-  }
-  
-  #Export JSON object
-  json.output <- toJSON(dt.input)
-  write(json.output, paste0(chr.output.file, ".json"))
-  
-  return(TRUE)
-}
 ```
 
 Now we simply need to call our data parsing function.
