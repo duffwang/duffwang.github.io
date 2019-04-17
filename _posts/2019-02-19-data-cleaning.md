@@ -11,7 +11,7 @@ All the code I wrote to clean/transform the data in R is shown alongside each se
 
 The dataset was generated in compliance with the Home Mortgage Disclosure Act of 1975, which requires disclosures on the originations and purchases of home purchase, improvement, and refinancing loans. The 2012-2014 data used in this report has been filtered to five states (MD, VA, WV, DC, DE) and to 1-4 family, owner-occupied home loans, with an originated action type, secured by a first or subordinate lien.
 
-###Reading in Data
+### Reading in Data
 
 The first step is to read in the raw data files from the link above. To do this, I write an R function that parses the data, does basic cleanup steps (as shown below), and also is memoized (saving a cached version of the dataset for faster future loading times). The code is shown with comments explaining what I am doing.
 

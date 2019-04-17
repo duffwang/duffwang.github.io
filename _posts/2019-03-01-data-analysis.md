@@ -238,4 +238,6 @@ Based on these results, I **reject my initial hypothesis**. Despite the shrinkin
 3. We can feel confident offering **conventional loans**, as the number of people seeking conventional loans is rising, and they make up the majority of all loans. 
 4. Finally, our peer institutions have loosened their lending criteria; we should **re-evaluate our own lending criteria** and make sure they are not overly conservative in order to remain competitive.
 
+### Remarks
+
 I hope this helps out anyone trying to get started analyzing data with R. Feel free to leave a comment or question below.
