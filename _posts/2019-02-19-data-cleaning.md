@@ -3,8 +3,9 @@ layout: post
 title: Tutorial on Data Cleaning and Transformation using R
 ---
 
-## Data Description
 To demonstrate proper data cleaning (also known as data munging) and transfomation, we will be working with a [publically available](https://www.ffiec.gov/hmda/hmdaflat.htm) dataset on Home Mortgage Loans. 
+
+## Data Description
 
 The dataset was generated in compliance with the Home Mortgage Disclosure Act of 1975, which requires disclosures on the originations and purchases of home purchase, improvement, and refinancing loans. The 2012-2014 data used in this report has been filtered to five states (MD, VA, WV, DC, DE) and to 1-4 family, owner-occupied home loans, with an originated action type, secured by a first or subordinate lien.
 
