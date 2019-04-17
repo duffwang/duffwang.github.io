@@ -1,4 +1,4 @@
 ---
 layout: post
-title: Applying Reinforcement Learning to Stock Trading with Python
+title: Stock Trading using Reinforcement Learning in Python
 ---

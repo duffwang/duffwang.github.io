@@ -1,4 +1,4 @@
 ---
 layout: post
-title: Experimenting with Unsupervised Learning Algorithms
+title: In-depth Look at Unsupervised Learning Algorithms with Python
 ---

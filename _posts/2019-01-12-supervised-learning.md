@@ -1,4 +1,4 @@
 ---
 layout: post
-title: Comparison of Supervised Machine Learning Algorithms
+title: Diving into Supervised Machine Learning Algorithms with Python
 ---
