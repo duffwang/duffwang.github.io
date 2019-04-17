@@ -8,7 +8,7 @@ subtitle: Quantitative trader, data enthusiast
 
 ## About Me
 
-Welcome! I go by Jeff or Duff, whatever you prefer. 
+Welcome! I go by Jeff or Duff. 
 
 I am a California native who likes markets, data, and programming. I am currently an equity options market maker located in San Francisco.
 
