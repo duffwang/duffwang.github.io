@@ -25,7 +25,6 @@ description: Quantitative trader & data enthusiast
 navbar-links:
   Blog: ""
   About Me: "aboutme"
-  Projects: "projects"
 
 
 # Image to show in the navigation bar - image must be a square (width = height)
