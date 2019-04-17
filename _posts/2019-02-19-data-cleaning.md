@@ -3,7 +3,7 @@ layout: post
 title: Tutorial on Data Cleaning and Transformation using R
 ---
 
-To demonstrate proper data cleaning (also known as data munging) and transfomation, we will be working with a [publically available](https://www.ffiec.gov/hmda/hmdaflat.htm) dataset on Home Mortgage Loans. 
+To demonstrate proper data cleaning (also known as data munging) and transfomation, we will be working with a [publically available](https://www.ffiec.gov/hmda/hmdaflat.htm) dataset on Home Mortgage Loans. All the code I wrote to clean/transform the data in R is shown alongside each section.
 
 ## Data Description
 
