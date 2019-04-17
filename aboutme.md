@@ -8,9 +8,9 @@ subtitle: Quantitative trader, data enthusiast
 
 ## About Me
 
-Welcome! I am a California native who likes markets, data, and programming. I am currently an equity options market maker located in San Francisco.
+Welcome! I go by Duff or Jeff. I am a California native who likes markets, data, and programming. I am currently an equity options market maker located in San Francisco.
 
-Feel free to contact me by email (see bottom of page), and check out my [GitHub](https://github.com/duffwang) or [LinkedIn](https://linkedin.com/in/duffwang).
+Feel free to contact me by email (see bottom of page), and check out my [GitHub](https://github.com/duffwang) or [LinkedIn](https://linkedin.com/in/jwang2013).
 
 ## Education
 
