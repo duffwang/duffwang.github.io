@@ -3,7 +3,9 @@ layout: post
 title: In-depth Look at Unsupervised Learning with Python
 ---
 
-I perform several experiments with unsupervised learning techniques to illuminate the advantages and disadvantages of each. In particular, I take a look at k-means clustering, expectaction maximization, principal component analysis, independent component analysis, randomized projections, and factor analysis. I compare two publically available datasets with different characteristics to demonstrate the advantages and disadvantages of each unsupervised learning algorithm (the same datasets as the previous blog post on supervised machine learning).
+I perform several experiments with unsupervised learning techniques to illuminate the advantages and disadvantages of each. In particular, I take a look at k-means clustering, expectaction maximization, principal component analysis, independent component analysis, randomized projections, and factor analysis.
+
+I compare two publically available datasets with different characteristics to demonstrate the advantages and disadvantages of each unsupervised learning algorithm (the same datasets as the previous blog post on supervised machine learning).
 
 ### Code
 

@@ -3,7 +3,9 @@ layout: post
 title: Deep Dive into Supervised Learning with Python
 ---
 
-In this blog post, I do an in-depth dive into five common supervised learning algorithms: Decision Trees, AdaBoost, k nearest neighbors, support vector machines (SVMs), and neural networks. I compare two publically available datasets with different characteristics to demonstrate the advantages and disadvantages of each supervised learning algorithm.
+In this blog post, I do an in-depth dive into five common supervised learning algorithms: Decision Trees, AdaBoost, k nearest neighbors, support vector machines (SVMs), and neural networks.
+
+I compare two publically available datasets with different characteristics to demonstrate the advantages and disadvantages of each supervised learning algorithm.
 
 ### Code
 
