@@ -72,7 +72,7 @@ With F1 scores of 0.971 and 0.85 respectively, the Adaboost represents a signifi
 
 KNN is a lazy instance based algorithm. Our grid search optimization gives us (n_neighbors = 15, weights = distance) and (50, distance) respectively.
 	
-	<img src="/img/s7.png" width="700px"/>
+<img src="/img/s7.png" width="700px"/>
  
 For the phishing dataset, I see our choice of n_neighbors = 15 is at the minimum of cross validation error, making it a good choice. For the wine dataset, cross validation does not have as clear a drop as n_neighbor varies. It’s likely our wine dataset is suffering from the curse of dimensionality, as many of the wine attributes may not actually contribute to wine quality due to its subjective nature, which the KNN model is ill-equiped to handle.
 	
