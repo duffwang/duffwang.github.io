@@ -1,6 +1,6 @@
 ---
 layout: post
-title: In-depth Look at Unsupervised Learning Algorithms with Python
+title: In-depth Look at Unsupervised Learning with Python
 ---
 
 I perform several experiments with unsupervised learning techniques to illuminate the advantages and disadvantages of each. In particular, I take a look at k-means clustering, expectaction maximization, principal component analysis, independent component analysis, randomized projections, and factor analysis. I compare two publically available datasets with different characteristics to demonstrate the advantages and disadvantages of each unsupervised learning algorithm (the same datasets as the previous blog post on supervised machine learning).
@@ -39,6 +39,8 @@ Instead of trying to visualize the clusters themselves, which would be messy and
 I chose Euclidean distance because our data has already been normalized, making other metrics such as cosine similarity not advantageous. To choose a value for k, I ran k-means for k from 3 to 11.  
 For the wine data (on right), we see that each additional cluster explains less variance than the last, but there is no sharp cutoff, so we cannot find an optimal k from this plot alone. 
 
+<img src="/img/u1.png" width="800px"/>
+
 We compare the true labels we have and look at the homogeneity (all clusters contain only members of a single class) and silhouette scores (all data points resemble members of its clusters but not others). Homogeneity increases with number of clusters as to be expected for data having only a binary label; silhouette score peaks at k = 4, which makes that the cluster size I will choose.
 
 For the Phishing data (on left), the variance plot starts to flatten out at around k = 4-7. Homogeneity shows a major improvement at k = 4; above that, our clusters become less homogeneous and have poorer silhouette scores, indicating k = 4 is the optimal value I will choose. 
@@ -46,6 +48,8 @@ For the Phishing data (on left), the variance plot starts to flatten out at arou
 #### Expected Maximization
 
 With expected maximization, we also much choose an optimal number of clusters that the algorithm will then maximize log-likelihood for. We look at the same performance metrics as we did for k-means: homogeneity, silhouette. Per sample average log likelihood is used to look at how effective each additional cluster is at fitting our datasets.
+
+<img src="/img/u2.png" width="800px"/>
 
 For the Phishing data, the variance plot flattens out at k =5. Homogeneity shows a major improvement at k = 5; above that, our clusters become less homogeneous and have poorer silhouette scores, indicating k = 5 is the optimal value I will choose. 
 
@@ -62,6 +66,8 @@ The dimensionally reduced datasets were then used in a decision tree classifier 
 
 In PCA, orthogonal basis vectors are chosen in feature space according to a simple algorithm: pick the basis vector that explains the most variance at any given point. This is done with eigenvector decomposition.
 
+<img src="/img/u3.png" width="700px"/>
+
 For the phishing data, at n = 16 we see most of the variance explained and no more improvement in cross validation accuracy, indicating this is a well-chosen parameter (we could say the same about all parameters between n=10 to 16, but it does look like there is a small improvement in accuracy, so I go with n = 16). 
 
 For the wine data, almost all variance is explained with 2 components. Increasing dimensions after that does not give us greater information. However, cross-validation accuracy continues to improve with number of components. This can be explained because PCA treats the variable with that explains the most variance as the most important feature, but doesn’t consider the response variable / prediction target, causing it to eliminate potentially useful features. We choose n = 10 as our optimal value, with the greatest CV accuracy.
@@ -69,7 +75,9 @@ For the wine data, almost all variance is explained with 2 components. Increasin
 #### Independent Component Analysis (ICA):
 
 In ICA, the idea is that we wish to separate out different independent components that have been mixed together, for example separating out two pictures that have been blended together. To do this, we distinguish these independent components from Gaussian noise by looking at how much kurtosis (the fourth moment or ‘tailedness’ of the probability distrubutions) can be explained by each basis vector. 
-	
+
+<img src="/img/u4.png" width="700px"/>
+
 For the Phishing dataset, n_components is fairly high at 23, and kurtosis explained by each component is not high. Accuracy ends up being as accurate as with PCA, but with more components, indicating the underlying data is not best explained as independent vectors in feature space. 
 	
 For the Wine dataset, all the kurtosis is explained by 6 components. This fits in with what we previously know about the wine dataset, namely that there is significantly more noise in the data and many of the features may not be correlated with good clusters. ICA may be a good choice for the wine dataset due to the high amount of kurtosis explained by the first few component. The chosen parameters is n = 6 where accuracy peaks and no further kurtosis is explained by adding more basis vectors.
@@ -77,6 +85,8 @@ For the Wine dataset, all the kurtosis is explained by 6 components. This fits i
 #### Randomized Projections (RP):
 
 In Randomized Projection, a transformation matrix transforms the N features into M features using an N x M matrix where each value is random from a Gaussian distribution. The Gaussian distribution used has zero mean and variance that is the inverse of number of components. 
+
+<img src="/img/u5.png" width="700px"/>
 
 The randomized projection was run multiple times and averaged out. Variation was fairly high when I re-ran the RP algorithm.
 
@@ -88,13 +98,17 @@ For the Wine dataset, accuracy is also less than other techniques, but there is 
 
 #### Factor Analysis (FA):
 
-In factor analysis, the idea is that there are various unobservable factors that explain the observable data. The observed data is assumed to be some linear combination of these factors with some error term. Expectation maximization is then used to fit the matrix that transforms the factors to the observed data. 
+In factor analysis, the idea is that there are various unobservable factors that explain the observable data. The observed data is assumed to be some linear combination of these factors with some error term. Expectation maximization is then used to fit the matrix that transforms the factors to the observed data.
+
+<img src="/img/u6.png" width="700px"/>
 
 With the Phishing dataset, we see accuracy of the decision tree classifier peaks fairly fast, but stays at around 90%, less than other dimensional reduction techniques. Gaussian noise variance attributable to each n_component is shows no trend. This suggests latent factors can be a reasonable explanation of the observed phishing data.
 
 With the wine dataset, accuracy drops quickly as we reduce the number of components. Noise variance is fairly bimodal between zero and one. The uneven distribution of noise variance suggests latent factors is not a good model for this data, as we are overfitting the data when noise variance is zero and underfitting when noise variance is one.
 
 #### Reconstruction Error Comparisons:
+
+<img src="/img/u7.png" width="700px"/>
 
 Finally I show reconstruction errors for each model. Random Projection reconstruction error was scaled down in order to display it on a plot; it was orders of magnitude higher than the other models since every component is mixed together into new ones, making it difficult to reconstruct. The other models show a consistent decrease in reconstruction error as components goes up, as we would expect due to more information retained.
 
@@ -104,16 +118,20 @@ Now, we re-run both clustering algorithms on our dimensionally reduced datasets 
 
 #### K-means:
 
+<img src="/img/u8.png" width="700px"/>
+
 For k-means clustering, we look at the homogeneity scores (how homogenous each cluster is) and silhouette scores (how similar each data point is to its own cluster and dissimilar to other clusters).
 For the Phishing dataset, it is clear that homogeneity is higher for FA than others. This suggests overfitting as number of components gets higher. This is corroborated by the silhouette scores which remain roughly constant, and are higher than any other method. 
 
 My conclusion is that FA is the best method for the Phishng dataset, but we should keep the number of clusters low to avoid overfitting. For ICA homogeneity remains low, which also is not great as it suggests the clusters are not clearly differentiable. Silhouette scores are also low, suggesting the data is poorly modelled by independent factors.
 
-	The wine dataset shows an interesting trend: homogeneity does not significantly rise for any of the dimensional reduction technique as n_components rises except for ICA. Since the label is binary, what is likely happening is that with ICA even a low number of clusters has already captured most of the information, and adding new clusters does not help, so using independent components is probably not a great way to dimensionally reduce due to the underlying dataset not being modelled well by ICA. 
+The wine dataset shows an interesting trend: homogeneity does not significantly rise for any of the dimensional reduction technique as n_components rises except for ICA. Since the label is binary, what is likely happening is that with ICA even a low number of clusters has already captured most of the information, and adding new clusters does not help, so using independent components is probably not a great way to dimensionally reduce due to the underlying dataset not being modelled well by ICA. 
 	
 With ICA, there is an upwards trend, but silhouette scores are very low, indicating independent factors is not a great model and we are overfitting as we increase the number of clusters. On the other hand, RP actually shows high silhouette scores and reasonable homogeneity scores; even though we previously showed RP sacrifices accuracy, the reasonable k-means clustering evaluation scores on RP means it is a viable way to reduce dimensions while not sacrificing too much.
 
 #### Expected Maximization
+
+<img src="/img/u9.png" width="700px"/>
 
 For expected maximization, we look at silhouette and homogeneity scores, but I also chose to look at completeness scores (all data points of a label are in the same cluster) to provide more insight into the best dimensionality reduction method.
 
@@ -125,7 +143,9 @@ For the wine dataset, although ICA and FA appear to do well in terms of complete
 
 **What are the differences between k-means and expected maximization on the different dimensional reduction techniques?**
 
-	My results did not show significant differences between the two clustering techniques. The best dimensional reduction technique was the same in both cases, with similar trends for number of clusters chosen. This is expected since even in our non-reduced case, we saw both clustering algorithms performing similarly. We would expect to see deviations between the two algorithms if our clusters in the datasets performed better when they are non-Gaussian and had different variances, since expected maximization would pick up on these patterns, while k-means does not since k-means only groups everything by simply distance to the cluster mean. Our datasets do not show these characteristics.
+My results did not show significant differences between the two clustering techniques. The best dimensional reduction technique was the same in both cases, with similar trends for number of clusters chosen. This is expected since even in our non-reduced case, we saw both clustering algorithms performing similarly. 
+
+We would expect to see deviations between the two algorithms if our clusters in the datasets performed better when they are non-Gaussian and had different variances, since expected maximization would pick up on these patterns, while k-means does not since k-means only groups everything by simply distance to the cluster mean. Our datasets do not show these characteristics.
 
 **Were the clusters the same when I re-ran the clustering algorithms on the reduced datasets?**
 
@@ -135,12 +155,18 @@ No, the clusters formed were clearly different depending on the dimensional redu
 
 I re-ran the dimensionally reduced Wine dataset through the neural network I used in the previous blog post. I performed it without clustering and with clustering (using EM and K-means) and plot components versus three-fold cross-validation.
 
+<img src="/img/u10.png" width="700px"/>
+
+<img src="/img/u11.png" width="700px"/>
+
 In order to apply clustering to the dataset, the cluster labels were appended to the dimensionally reduced dataset, and then the neural network classifier was run on that newly created dataset.
 Looking at neural network accuracy results after dimensionally reducing the datasets in different ways, we see there is no significant difference in neural network accuracy for FA, PCA, and RP. The cluster labels don’t actually add information that is inherently new, so it is likely the neural network is able to classify just as well without them, as the neural network hidden layer weights will implicitly consider data that are similar to each other.
 
 The exception is ICA, which shows weaker accuracy with clustering then without. This is in line with my previous analyses which showed clustering on ICA data produces poor clusters with low silhouette scores and that are homogeneous, meaning they don’t discriminate well between truly different clusters of data, which adds more noise the neural network is forced to use and potentially overfit on.
 
 In terms of accuracy between the dimensional reduction algorithms, we see that RP produces datasets that leads to significantly lower cross-validation accuracy than the other datasets, indicating we are losing a significant amount of information when reducing this way. The other three dimensional reduction techniques are fairly similar in terms of absolute accuracy, and all trend towards poorer accuracy as n_components is reduced in a similar way. There is a consistent steep decline at n = 4, which is consistent with our previous analysis that showed that the optimum number of dimensions for the wine dataset is always more than 4 (usually around 6-9). This likely shows that the wine dataset has a fair number of features with poor information, but all forms of dimensional reduction do sacrifice some accuracy due to the increasing slope shown in the graphs. 
+
+<img src="/img/u12.png" width="700px"/>
  
 In turn, then, we should receive gains in neural network training speed due to having less features to work on. The graph above shows neural network training speed does significantly decrease at low dimensions compared to high dimensions. One exception is RP, which shows less of a trend, possibly because the information lost even at higher dimensions that the neural network is able to converge quickly.
 

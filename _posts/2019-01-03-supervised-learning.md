@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Deep Diving into Supervised Machine Learning Algorithms with Python
+title: Deep Dive into Supervised Learning with Python
 ---
 
 In this blog post, I do an in-depth dive into five common supervised learning algorithms: Decision Trees, AdaBoost, k nearest neighbors, support vector machines (SVMs), and neural networks. I compare two publically available datasets with different characteristics to demonstrate the advantages and disadvantages of each supervised learning algorithm.
@@ -31,36 +31,37 @@ Using these model parameters, I generate learning curves with varying input samp
 
 ### Decision Trees
 
-For decision trees, we wish to prune the trees by merging leaf nodes according to certain criteria. These hyperparameters include criterion for choosing the best attribute at any given branch (gini or entropy), the max depth of our tree, and finally the minimum samples split (how many data points must be in the node in order to split it, otherwise it becomes a leaf). 
+For decision trees, I wish to prune the trees by merging leaf nodes according to certain criteria. These hyperparameters include criterion for choosing the best attribute at any given branch (gini or entropy), the max depth of our tree, and finally the minimum samples split (how many data points must be in the node in order to split it, otherwise it becomes a leaf). 
 
 Our brute force GridSearchCV give us Branch Criterion, Max Depth, Min Samples Split = (Entropy, 15, 2) for Phishing Data and (Gini, 15, 75) for Wine Data.
 
-We validate the max depth hyperparameter by using SciPy’s validation curve function with cross validation set to 5, meaning we divide the training data into five parts, train on four while testing on the last one and repeat for all 5 possible testing sets/training sets. This is done for each depth level with the resultant errors plotted. The vertical line indicates the optimal parameter from our grid search.
+We validate the max depth hyperparameter by using SciPy’s validation curve function with cross validation set to 5, meaning I divide the training data into five parts, train on four while testing on the last one and repeat for all 5 possible testing sets/training sets. This is done for each depth level with the resultant errors plotted. The vertical line indicates the optimal parameter from our grid search.
 
 <img src="/img/s1.png" width="700px"/>
  
-Our hyperparameters chosen seem decent looking at the validation curves. Error reaches a minimum for the cross validation set at the chosen max depth, while further increasing max depth does not decrease cross validation error, indicating we would be overfitting in those ranges. A constant error is expected at high max depths since the tree would be large enough to cover all data points in our ~3-4k training sets (with the tree able to encompass 2^(max_depth) nodes).
+Our hyperparameters chosen seem decent looking at the validation curves. Error reaches a minimum for the cross validation set at the chosen max depth, while further increasing max depth does not decrease cross validation error, indicating I would be overfitting in those ranges. A constant error is expected at high max depths since the tree would be large enough to cover all data points in our ~3-4k training sets (with the tree able to encompass 2^(max_depth) nodes).
 
 <img src="/img/s2.png" width="700px"/>
 
-Using our chosen hyperparameters, we generating learning curves for each sample. For the Phishing data, we see the error is zero at sample size of 1 (as expected, since it is trivial to fit a decision tree to one point) and increases as sample size increases. Cross validation error starts decreasing around sample size 2000, but does not decrease further with greater sample size. The gap between training and cross validation is not high, being only ~5-10% off, indicating low variance. Bias is also fairly low since the magnitude of errors for both training and cross validation is low. 
+Using our chosen hyperparameters, I generate learning curves for each sample. For the Phishing data, I see the error is zero at sample size of 1 (as expected, since it is trivial to fit a decision tree to one point) and increases as sample size increases. Cross validation error starts decreasing around sample size 2000, but does not decrease further with greater sample size. The gap between training and cross validation is not high, being only ~5-10% off, indicating low variance. Bias is also fairly low since the magnitude of errors for both training and cross validation is low. 
 
 In contrast, our wine dataset shows high variance; there is a large gap between the two curves indicates our model fits the training data better than the cross validation set. Bias is very low, with no error in all sample sizes tried. This is not unusual for decision trees, as it means our tree is large enough to encompass all data points without merged leaves. 
 
 <img src="/img/s3.png" width="700px"/>
 
-Overall, we see from the confusion matrices that the DT model does well on the phishing dataset with an F1 score of 0.953, but not as well on the wine dataset with an F1 score of 0.822. I chose to use an F1 score due to the wine dataset being slightly imbalanced, as the F1 score combines precision and recall to minimize how accuracy is misleading when applied to imbalanced datasets. Comparison and analysis of F1 scores and timing is presented in the last section of this report.
+Overall, I see from the confusion matrices that the DT model does well on the phishing dataset with an F1 score of 0.953, but not as well on the wine dataset with an F1 score of 0.822. I chose to use an F1 score due to the wine dataset being slightly imbalanced, as the F1 score combines precision and recall to minimize how accuracy is misleading when applied to imbalanced datasets. Comparison and analysis of F1 scores and timing is presented in the last section of this report.
 
 ### AdaBoost 
-For Adaboost we choose an ensemble of weak DT Learners that aggressively pre-prune (entropy, max depth 5, min samples split 100) with GridSearchCV giving us hyperparameters of (estimators = 50, learning rate = 0.5) and (200, 0.3) for the two datasets respectively. Once again we’ll analyze these parameters with a validation curve. 
+
+For Adaboost I choose an ensemble of weak DT Learners that aggressively pre-prune (entropy, max depth 5, min samples split 100) with GridSearchCV giving us hyperparameters of (estimators = 50, learning rate = 0.5) and (200, 0.3) for the two datasets respectively. Once again we’ll analyze these parameters with a validation curve. 
 
 <img src="/img/s4.png" width="700px"/>
  
-We see from the validation curve that in both cases, cross validation error drops off as learning rate increases, and our chosen learning rates are in the beginning of the regime where cross validation error stops improving, which is where we want to be to avoid overfitting. 
+We see from the validation curve that in both cases, cross validation error drops off as learning rate increases, and our chosen learning rates are in the beginning of the regime where cross validation error stops improving, which is where I want to be to avoid overfitting. 
 
 <img src="/img/s5.png" width="700px"/>
  
-Our learning curve for the phishing dataset again shows low variance and low bias. We see that cross validation error has not yet leveled off, indicating a larger sample size could improve the model. 
+Our learning curve for the phishing dataset again shows low variance and low bias. I see that cross validation error has not yet leveled off, indicating a larger sample size could improve the model. 
 For the wine dataset training error is zero (as expected given Decision Tree results) and the cross validation error similarly has not levelled off. Bias is low and variance is high, similar to Decision Tree.
 
 <img src="/img/s6.png" width="700px"/>
@@ -68,26 +69,28 @@ For the wine dataset training error is zero (as expected given Decision Tree res
 With F1 scores of 0.971 and 0.85 respectively, the Adaboost represents a significant improvement over a single Decision Tree for both datasets. This makes sense as an emsemble learner is more resistant to overfitting and produces better results generally than a single learner.
 
 ### k Nearest Neighbors (KNN)
-	KNN is a lazy instance based algorithm. Our grid search optimization gives us (n_neighbors = 15, weights = distance) and (50, distance) respectively.
+
+KNN is a lazy instance based algorithm. Our grid search optimization gives us (n_neighbors = 15, weights = distance) and (50, distance) respectively.
 	
 	<img src="/img/s7.png" width="700px"/>
  
-	For the phishing dataset, we see our choice of n_neighbors = 15 is at the minimum of cross validation error, making it a good choice. For the wine dataset, cross validation does not have as clear a drop as n_neighbor varies. It’s likely our wine dataset is suffering from the curse of dimensionality, as many of the wine attributes may not actually contribute to wine quality due to its subjective nature, which the KNN model is ill-equiped to handle.
+For the phishing dataset, I see our choice of n_neighbors = 15 is at the minimum of cross validation error, making it a good choice. For the wine dataset, cross validation does not have as clear a drop as n_neighbor varies. It’s likely our wine dataset is suffering from the curse of dimensionality, as many of the wine attributes may not actually contribute to wine quality due to its subjective nature, which the KNN model is ill-equiped to handle.
 	
 <img src="/img/s8.png" width="700px"/>
  
-For both datasets, we see cross validation scores decrease as sample size increases, suggesting a larger sample size would further improve the model in both cases. Given a large attribute space this makes sense as the data is sparsely populated in n-dimensional space, where n is the number of attributes. 
+For both datasets, I see cross validation scores decrease as sample size increases, suggesting a larger sample size would further improve the model in both cases. Given a large attribute space this makes sense as the data is sparsely populated in n-dimensional space, where n is the number of attributes. 
 
 <img src="/img/s9.png" width="700px"/>
  
 Both models performed reasonably well relative to the Decision Tree but were slightly worse than the Adaboost model, with F1 scores of 0.948 and 0.845 respectively. 
 
 ### Support Vector Machines (SVM)
-The Support Vector Machine model classifies data by separating them in n-dimensional feature space with a hyperplane, using the kernel trick to make it computationally feasible. We use the default rbf kernel for which the main hyperparameters are C, the penalty parameter, and gamma, the kernel coefficient. Our GridSearchCV gives (C = 10, gamma = 0.1)  and (100, 0.04).
+
+The Support Vector Machine model classifies data by separating them in n-dimensional feature space with a hyperplane, using the kernel trick to make it computationally feasible. I use the default rbf kernel for which the main hyperparameters are C, the penalty parameter, and gamma, the kernel coefficient. Our GridSearchCV gives (C = 10, gamma = 0.1)  and (100, 0.04).
 
 <img src="/img/s10.png" width="700px"/>
 
-We validate our chosen hyperparameters with a validation curve. In both cases, the value of C is at the inflection point at which the cross validation error begins to level off, indicating we are neither underfitting nor overfitting.
+We validate our chosen hyperparameters with a validation curve. In both cases, the value of C is at the inflection point at which the cross validation error begins to level off, indicating I am neither underfitting nor overfitting.
 
 <img src="/img/s11.png" width="700px"/>
  
@@ -95,22 +98,23 @@ In both cases the learning curve shows cross validation errors decreasing as sam
 
 <img src="/img/s12.png" width="700px"/>
 
-	SVM performed well for the phishing dataset with a F1 score of 0.961. However, for the wine dataset, SVM performed worse than all previous algorithms, with an F1 score of 0.798. The kernel is likely not extracting  information well from the wine dataset, which is fairly small and has attributes that may not have a lot of inter-correlated information (where support vector machines shine).
+SVM performed well for the phishing dataset with a F1 score of 0.961. However, for the wine dataset, SVM performed worse than all previous algorithms, with an F1 score of 0.798. The kernel is likely not extracting  information well from the wine dataset, which is fairly small and has attributes that may not have a lot of inter-correlated information (where support vector machines shine).
 
 ### Neural Networks
-	Feed-forward neural networks are powerful tools that can approximate any other continuous function, but come at the expense of long training times and difficult interpretability. We use a multi-layer perceptron network where we vary the hidden layer size and the maximum number of iterations. GridSearchCV gives (hidden layer = (105,10,2), max iterations = 1700) and ((105,12,2) and 2000).
+
+Feed-forward neural networks are powerful tools that can approximate any other continuous function, but come at the expense of long training times and difficult interpretability. I use a multi-layer perceptron network where I vary the hidden layer size and the maximum number of iterations. GridSearchCV gives (hidden layer = (105,10,2), max iterations = 1700) and ((105,12,2) and 2000).
 	
 <img src="/img/s13.png" width="700px"/>
    
-We see that for the phishing dataset, cross validation error quickly falls as we increase max iterations but then levels off. For the wine dataset, cross validation error does not stabliize well, and cross-validation errors are very similar to training errors, suggesting the neural network is not converging on a good solution, possibly due to the low number of training samples.
+We see that for the phishing dataset, cross validation error quickly falls as I increase max iterations but then levels off. For the wine dataset, cross validation error does not stabliize well, and cross-validation errors are very similar to training errors, suggesting the neural network is not converging on a good solution, possibly due to the low number of training samples.
 
 <img src="/img/s14.png" width="700px"/>
  
-	For the phishing dataset, bias is low and variance is fairly low, with error decreasing with more samples. The wine dataset shows some interesting behavior: bias is high while  variance is low, indicating the neural network failed to find good neural parameters to fit the training data.
+For the phishing dataset, bias is low and variance is fairly low, with error decreasing with more samples. The wine dataset shows some interesting behavior: bias is high while  variance is low, indicating the neural network failed to find good neural parameters to fit the training data.
  
 <img src="/img/s15.png" width="700px"/>
 
-The confusion matrix shows the neural net performs fairly well on the Phishing dataset (F1 score of 0.968) but not particularly well on the Wine dataset (F1 score of 0.815). The poor performance on the wine dataset may in part be explained by the low number of data points. We saw that cross validation did not stabilize well in the validation curve, so the model is not able to converge on optimal perceptron parameters leading to increased model variance.
+The confusion matrix shows the neural net performs fairly well on the Phishing dataset (F1 score of 0.968) but not particularly well on the Wine dataset (F1 score of 0.815). The poor performance on the wine dataset may in part be explained by the low number of data points. I saw that cross validation did not stabilize well in the validation curve, so the model is not able to converge on optimal perceptron parameters leading to increased model variance.
 
 ### Model Comparisons
 
@@ -134,13 +138,13 @@ As expected, AdaBoost accuracy beats out a single Decision Tree by itself. The e
 
 SVC is comparable in training time and accuracy for the Phishing data to AdaBoost, but performs much more poorly for the Wine data. The model is sensitive to the kernel chosen and may not be optimal for the dataset. In contrast KNN performed well on the wine dataset but more poorly on the Phishing dataset. This may be due to the high number of features in the Phishing dataset, with possibly irrelevant features skewing the KNN feature space, a known weakness of the model. Meanwhile the wine dataset has a low number of features that may correlate well with each other in feature space. 
 
-It was not shocking to see that Neural Net was not the most accurate for either dataset. Neural networks typically require massive datasets to shine, with the trade-off of significant training times. Our datasets are too small to reap these benefits. Nevertheless our MLP Neural Network performed amongst the best of the various models for the Phishing dataset, but was poor on the wine dataset. We saw no convergence in the validation curve for the wine dataset suggesting not enough datapoints.
+It was not shocking to see that Neural Net was not the most accurate for either dataset. Neural networks typically require massive datasets to shine, with the trade-off of significant training times. Our datasets are too small to reap these benefits. Nevertheless our MLP Neural Network performed amongst the best of the various models for the Phishing dataset, but was poor on the wine dataset. I saw no convergence in the validation curve for the wine dataset suggesting not enough datapoints.
 
 **How do the characteristics of the datasets affect our results?**
 
-It’s clear the two datasets are quite different; we easily reached ~95% accuracy with nearly all models on the phishing dataset while on the wine dataset we varied from doing barely better than chance (Neural Net model) to significantly better (Adaboost) with a 10 percentage point range. This difference can largely be explained by the inherent difficulty of classifying wine quality using the provided attributes. 
+It’s clear the two datasets are quite different; I easily reached ~95% accuracy with nearly all models on the phishing dataset while on the wine dataset I varied from doing barely better than chance (Neural Net model) to significantly better (Adaboost) with a 10 percentage point range. This difference can largely be explained by the inherent difficulty of classifying wine quality using the provided attributes. 
 
-Wine quality shows weak correlations with many of the attributes, with a moderate correlation of around 0.5 only to a handful of attributes. This makes it easy to overfit on datapoints with little real info. We saw in KNN that varying K did not produce significantly different results, indicating the wine dataset has many similar instances of datasets; otherwise we’d expect high bias as k increases.  Adaboost did well with the wine dataset on the otherhand as it is resistant to overfitting due to the many weak learners it uses, and does better with fewer datapoints like we have in the wine dataset.
+Wine quality shows weak correlations with many of the attributes, with a moderate correlation of around 0.5 only to a handful of attributes. This makes it easy to overfit on datapoints with little real info. I saw in KNN that varying K did not produce significantly different results, indicating the wine dataset has many similar instances of datasets; otherwise we’d expect high bias as k increases.  Adaboost did well with the wine dataset on the otherhand as it is resistant to overfitting due to the many weak learners it uses, and does better with fewer datapoints like I have in the wine dataset.
 
 **What amount of parameter tuning was necessary for our best results?**
 
