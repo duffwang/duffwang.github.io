@@ -167,7 +167,9 @@ Once again I show this indicator on the first two months of data. The actual ind
 
 ### Predicting the Future
 
-Now that I have explained the idea and code behind these three technical indicators, I want to try to use them to predict future prices. I will do so by using an ensemble learner called a Random Forest. But before I can explain what a random forest is, I need to take a detour and ex
+Now that I have explained the idea and code behind these three technical indicators, I want to try to use them to predict future prices. I will do so by using an ensemble learner called a Random Forest, which consists of many weak learners (in this case Random Trees). By putting these together using bootstrap aggregation, we reduce variance without increasing bias like we normally would due to the variance-bias tradeoff.
+
+Let's start by looking at the individual weak learner, the random tree.
 
 #### Random Tree 
 
@@ -212,29 +214,25 @@ class RTLearner(object):
         return np.array([self.traverseTree(x) for x in points])
 ```
 
+A Random Tree learner is similar to the Decision Tree learner I described in my past Supervised Learning post, except instead of using a particular criteria to decide which feature to split values on, the Random Tree simply chooses one randomly. 
+
+The code above shows my implementation of the Random Tree learner. I include a leaf size, below which all values are aggregated together using the mean value.
+
 #### Random Forest 
 
 ```python
 class BagLearner(object):
- 			  		 			     			  	   		   	  			  	
-    def __init__(self, learner, kwargs, bags, boost, verbose = False):
+    def __init__(self, learner, kwargs, bags):
         self.learner = learner
         self.kwargs = kwargs
         self.bags = bags
-        self.boost = boost
 
     def sampleData(self,dataX, dataY):
         n = len(dataX)
         idx_samples = np.random.randint(low = 0, high = n, size = n)
         return dataX[idx_samples], dataY[idx_samples]
 
- 			  		 			     			  	   		   	  			  	
-    def addEvidence(self,dataX,dataY): 			  		 			     			  	   		   	  			  	
-        """ 			  		 			     			  	   		   	  			  	
-        @summary: Add training data to learner
-        @param dataX: X values of data to add
-        @param dataY: the Y training values
-        """
+    def addEvidence(self,dataX,dataY):
         #Creates ensemble with (bags) number of learners
         self.ensemble = []
         for x in range(0, self.bags):
@@ -243,103 +241,15 @@ class BagLearner(object):
             learner_instance.addEvidence(dataX_sample, dataY_sample)
             self.ensemble.append(learner_instance)
 
-    def query(self,points): 			  		 			     			  	   		   	  			  	
-        """ 			  		 			     			  	   		   	  			  	
-        @summary: Estimate a set of test points given the model we built. 			  
-        @param points: should be a numpy array with each row corresponding to a specific query. 
-        @returns the estimated values according to the saved model. 			  		 			     			  	   		   	  			  	
-        """
+    def query(self,points):
         #Get results from every learner in the ensemble and average them
         y_estimate_all = np.array([x.query(points) for x in self.ensemble])
         y_estimate = np.mean(y_estimate_all, axis = 0)
         return y_estimate
 ```
 
-#### Simulating a Market
+Now we can use bootstrap aggregation to create our Random Forest. The advantge of this method is the ensemble of Random Trees is more robust against overfitting, but at the expense of more training time. 
 
-For the purposes of this post, we'll assume we can take at most a long position of 1000 shares or a short position of -1000 shares on any given day.
-
-```python
-def compute_portfolio_stats(port_val, rfr = 0, sf = 252):
-    returns_daily = (port_val[1:] - port_val[:-1].values) / port_val[:-1].values
-
-    cr = (port_val[-1] - port_val[0]) / port_val[0]
-    adr = returns_daily.mean()
-    sddr = returns_daily.std()
-    sr = (sf ** 0.5) * (adr - rfr) / sddr
-
-    return cr, adr, sddr, sr
-
-def print_stats(cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio, portvals):
-    print "Sharpe Ratio of Fund: {}".format(sharpe_ratio)
-    print "Cumulative Return of Fund: {}".format(cum_ret)
-    print "Standard Deviation of Fund: {}".format(std_daily_ret)
-    print "Average Daily Return of Fund: {}".format(avg_daily_ret)
-    print "Final Portfolio Value: {}".format(portvals[-1])
-
-def compute_portfolio_value(port_cur, prices):
-    port_val = 0
-    for key, val in port_cur.iteritems():
-        port_val = port_val + val * prices[key]
-    return port_val
- 			  		 			     			  	   		   	  			  	
-def compute_portvals(trades, sym = 'JPM', start_val = 1000000, commission=9.95, impact=0.005):
-
-    #Process data
-    orders_df = trades
-    start_date = orders_df.index[0]
-    end_date = orders_df.index[-1]
-    orders_df = orders_df.sort_index()
-
-    #Initialize portfolio
-    sym_all = [sym]
-
-    prices_all = get_data(sym_all, pd.date_range(start_date, end_date))[sym_all]
-    dts_market_all = set(prices_all.index)
-    port_cur = dict.fromkeys(sym_all, 0)
-    cash = start_val
-    dt_cur = start_date - datetime.timedelta(1)
-    portvals = pd.DataFrame()
-
-    for dt, qty in orders_df.itertuples():
-        if qty < 0:
-            order = 'SELL'
-        else:
-            order = 'BUY'
-
-        if (qty == 0 or dt not in dts_market_all) and dt != end_date:
-            continue
-        #Update portfolio values for all in between days
-        dt_yesterday = dt - datetime.timedelta(1)
-        dts_last = [dt_cur + datetime.timedelta(days=x + 1) for x in range((dt_yesterday-dt_cur).days)]
-        dts_last = [x for x in dts_last if x in dts_market_all]
-        if len(dts_last) > 0:
-            portvals_last = [compute_portfolio_value(port_cur, prices_all.loc[x,]) + cash for x in dts_last]
-            portvals = portvals.append(pd.DataFrame(index=dts_last, data=portvals_last))
-        dt_cur = dt
-
-
-        #Update current portfolio
-        price = prices_all[sym][dt]
-        if order == 'SELL':
-            price = price * (1 - impact)
-        else:
-            price = price * (1 + impact)
-        port_cur[sym] = port_cur[sym] + qty
-        cash -= qty * price
-
-        # Update commission
-        cash -= commission
-
-        #Update portfolio
-        portval_today = compute_portfolio_value(port_cur, prices_all.loc[dt,]) + cash
-        if len(portvals.index) > 0 and portvals.index[-1] == dt: #edge case: first entry and duplicate dates
-            portvals.iloc[-1][0] = portval_today
-        else:
-            portvals = portvals.append(pd.DataFrame(index=[dt], data=[portval_today]))
-
-    return portvals
-```
 
 #### Putting it all together: Training and Testing our Learner
 
@@ -417,76 +327,18 @@ class StrategyLearner(object):
         return df_trades
 ```
 
-```python
-    learner = StrategyLearner()
-    learner.addEvidence(sym, prices)
+Finally, we create our strategy learner. This learner uses the Random Forest ensemble learner I previously described. It then uses the technical signals as its input features and the percent by which the stock went up or down as its label.
 
-  
-    # List of trades to do
-    df_trades_in = learner.testPolicy(sym, sd_in, ed_in, sv)
-    x = learner.testPolicy(sym, sd_in, ed_in, sv)
-    df_trades_out = learner.testPolicy(sym, sd_out, ed_out, sv)
-    df_benchmark_in = pd.DataFrame(index=df_trades_in.index, data=[0] * len(df_trades_in))
-    df_benchmark_out = pd.DataFrame(index=df_trades_out.index, data=[0] * len(df_trades_out))
-    df_benchmark_in.iloc[0] = 1000
-    df_benchmark_out.iloc[0] = 1000
+The strategy learner can now take any new list of stock prices over any arbitrary time period and predict when the optimal time to buy or sell is. I trained the learner on our in-sample period, as shown below. Alongside, I plotted the benchmark (holding JPM stock over the time period without any trading) as well as a manual strategy I created on my own, without the fine tuning of machine learning.
 
-    #Simulate markets
-    portvals_jpm_in = msc.compute_portvals(df_trades_in, sym, sv, 0, impact)
-    portvals_jpm_out = msc.compute_portvals(df_trades_out, sym, sv, 0, impact)
-    portvals_benchmark_in = msc.compute_portvals(df_benchmark_in, sym, sv, 0, impact)
-    portvals_benchmark_out = msc.compute_portvals(df_benchmark_out, sym, sv, 0, impact)
+<img src="/img/t6.png" width="700px"/>
+
+As you can see, our strategy learner performs very well in the in-sample period, beating both my manual strategy and the benchmark considerably. This is to be expected as we trained the model using this dataset. Now, we run it on the out-of-sample period.
 
 
-    #Normalize
-    portvals_jpm_in[0] = portvals_jpm_in[0] / portvals_jpm_in[0][0]
-    portvals_jpm_out[0] = portvals_jpm_out[0] / portvals_jpm_out[0][0]
-    portvals_benchmark_in[0] = portvals_benchmark_in[0] / portvals_benchmark_in[0][0]
-    portvals_benchmark_out[0] = portvals_benchmark_out[0] / portvals_benchmark_out[0][0]
+<img src="/img/t7.png" width="700px"/>
 
-    #Get stats
-    cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio = msc.compute_portfolio_stats(portvals_benchmark_in[0])
-    print "Benchmark In-sample Stats:"
-    msc.print_stats(cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio, portvals_benchmark_in[0])
-
-    print
-    cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio = msc.compute_portfolio_stats(portvals_jpm_in[0])
-    print "Strat In-sample Stats:"
-    msc.print_stats(cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio, portvals_jpm_in[0])
-
-    print
-    cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio = msc.compute_portfolio_stats(portvals_benchmark_out[0])
-    print "Benchmark Out-of-sample Stats:"
-    msc.print_stats(cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio, portvals_benchmark_out[0])
-
-    print
-    cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio = msc.compute_portfolio_stats(portvals_jpm_out[0])
-    print "Strat Out-of-sample Stats:"
-    msc.print_stats(cum_ret, avg_daily_ret, std_daily_ret, sharpe_ratio, portvals_jpm_out[0])
-
-
-    df = pd.concat([portvals_jpm_in[0], portvals_benchmark_in[0]], keys=['BagLearner Strategy', 'Benchmark'], axis=1)
-    ax = df.plot(title='JPM Bag Learner Strategy versus Benchmark 1/1/08-12/31/09', fontsize=12, color=['black', 'blue'])
-    ax.set_xlabel('Date')
-    ax.set_ylabel('Price')
-    for x in df_trades_in[df_trades_in[0] > 0].index:
-        plt.axvline(x=x, color = 'green')
-    for x in df_trades_in[df_trades_in[0] < 0].index:
-        plt.axvline(x=x, color = 'red')
-
-    #plt.savefig("strategy_in_sample.png")
-
-    df = pd.concat([portvals_jpm_out[0], portvals_benchmark_out[0]], keys=['BagLearner Strategy', 'Benchmark'], axis=1)
-    ax = df.plot(title='JPM Bag Learner Strategy versus Benchmark 1/1/10-12/31/11', fontsize=12, color=['black', 'blue'])
-    ax.set_xlabel('Date')
-    ax.set_ylabel('Price')
-    for x in df_trades_out[df_trades_out[0] > 0].index:
-        plt.axvline(x=x, color='green')
-    for x in df_trades_out[df_trades_out[0] < 0].index:
-        plt.axvline(x=x, color='red')
-
-    #plt.savefig("strategy_out_of_sample.png")
-```
+The Random Forest learner does surprisingly well even in the out of sample period. Meanwhile, my manual strategy is unable to beat the benchmark. This shows the signals we used did not significantly degrade in the out-of-sample period. Does this mean we can make as much money as we want now? I've delve into this in the next section.
 
 ### Can we beat the market with technical analysis?
 
