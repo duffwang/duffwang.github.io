@@ -338,13 +338,13 @@ As you can see, our strategy learner performs very well in the in-sample period,
 
 <img src="/img/t7.png" width="700px"/>
 
-The Random Forest learner does surprisingly well even in the out of sample period. Meanwhile, my manual strategy is unable to beat the benchmark. This shows the signals we used did not significantly degrade in the out-of-sample period. 
+The Random Forest learner does surprisingly well even in the out of sample period. Meanwhile, my manual strategy is unable to beat the benchmark. This shows the signals we used did not significantly degrade in the out-of-sample period.
 
 ### Remarks
 
 I hope this demonstration helps you understand how you might use machine learning to predict prices in the stock market. 
 
-However, keep in mind this is an educational exercise. I would caution against trying to actually beat the market with technical analysis.
+However, keep in mind this is an educational exercise. I would caution against trading with real money using these techniques.
 
 In general, it is difficult if not impossible to beat the market. You could probably can beat the market, for brief periods of time, if you have teams of very smart people working on it full time. For example, famous hedge funds like Renaissance Technologies employ technical strategies, and do exactly that. But a typical retail investor stands little chance against more sophisticated investors, and our cognitive biases make us over-confident in our ability to find patterns in noise. In fact, if the efficient market hypothesis is true (which nobody knows for sure), it is impossible to predict future prices with technical analysis.
 
