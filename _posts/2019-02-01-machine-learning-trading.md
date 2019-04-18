@@ -338,7 +338,7 @@ As you can see, our strategy learner performs very well in the in-sample period,
 
 <img src="/img/t7.png" width="700px"/>
 
-The Random Forest learner does surprisingly well even in the out of sample period. Meanwhile, my manual strategy is unable to beat the benchmark. This shows the signals we used did not significantly degrade in the out-of-sample period. Does this mean we can make as much money as we want now? I've delve into this in the next section.
+The Random Forest learner does surprisingly well even in the out of sample period. Meanwhile, my manual strategy is unable to beat the benchmark. This shows the signals we used did not significantly degrade in the out-of-sample period. Does this mean we can make as much money as we want now? Probably not, and I'll explain why.
 
 ### Can we beat the market with technical analysis?
 
