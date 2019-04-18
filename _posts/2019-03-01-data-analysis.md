@@ -1,6 +1,9 @@
 ---
 layout: post
-title: How to Explore and Construct a Data Narrative, Regression Analysis in R
+title: Data Narrative
+subtitle: Tutorial on Exploring Data and Constructing a Narrative in R
+tags: [analysis, R, data science, regression]
+image: /img/5.png
 ---
 
 Building a narrative around data is important for making a convincing argument about what the data shows. The best data narrative should be able to present all arguments succinctly and clearly. 

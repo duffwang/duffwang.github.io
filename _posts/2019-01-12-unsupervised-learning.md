@@ -1,6 +1,9 @@
 ---
 layout: post
-title: In-depth Look at Unsupervised Learning
+title: Unsupervised Learning
+subtitle: In-depth Look at Unsupervised Machine Learning techniques
+tags: [machine learning, unsupervised learning, data science, analysis, python]
+image: /img/2.png
 ---
 
 I perform several experiments with unsupervised learning techniques to illuminate the advantages and disadvantages of each. In particular, I take a look at k-means clustering, expectaction maximization, principal component analysis, independent component analysis, randomized projections, and factor analysis.

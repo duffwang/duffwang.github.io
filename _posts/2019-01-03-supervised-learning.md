@@ -1,6 +1,9 @@
 ---
 layout: post
-title: Deep Dive into Supervised Learning
+title: Supervised Learning
+subtitle: Deep Dive into Supervised Machine Learning
+tags: [machine learning, supervised learning, data science, analysis, python]
+image: /img/1.png
 ---
 
 In this blog post, I do an in-depth dive into five common supervised learning algorithms: Decision Trees, AdaBoost, k nearest neighbors, support vector machines (SVMs), and neural networks.

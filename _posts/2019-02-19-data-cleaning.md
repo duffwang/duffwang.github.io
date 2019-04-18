@@ -1,6 +1,9 @@
 ---
 layout: post
-title: Tutorial on Data Cleaning and Transformation using R
+title: Cleaning Data
+subtitle: Tutorial on Data Cleaning and Transformation using R
+tags: [analysis, R, data science]
+image: /img/4.png
 ---
 
 To demonstrate proper data cleaning (also known as data munging) and transfomation, we will be working with a [publically available](https://www.ffiec.gov/hmda/hmdaflat.htm) dataset on Home Mortgage Loans. 
