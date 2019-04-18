@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Machine Learning and Markets
-subtitle: Full Tutorial on Trading using an Ensemble Random Forest Learner in Python
-tags: [machine learning, finance, data science, python, supervised learning]
+subtitle: Full Tutorial on Trading using an Ensemble Learner in Python
+tags: [machine learning, finance, python, supervised learning, random forest]
 image: /img/3.png
 ---
 
