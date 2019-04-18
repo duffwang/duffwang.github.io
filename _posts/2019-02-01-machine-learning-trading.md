@@ -169,7 +169,7 @@ Once again I show this indicator on the first two months of data. The actual ind
 
 Now that I have explained the idea and code behind these three technical indicators, I want to try to train them on the training data. I will do by using an ensemble learner called a Random Forest. 
 
-**WORK IN PROGRESS**
+>>>>>**WORK IN PROGRESS**<<<<<<
 
 #### Random Tree 
 
@@ -183,7 +183,7 @@ For the purposes of this post, we'll assume we can take at most a long position 
 
 ### Can we beat the market with technical analysis?
 
-The short answer is no. 
+The short answer is almost certainly no. 
 
 The long answer is that maybe you can beat the market, for brief periods of time, if you have teams of PhDs working on it full time. Renaissance Technologies is considered one of the best hedge funds that employs technical strategies, and does exactly that. But you or I, trading casually in our free time, are almost certain to lose against the market.
 
