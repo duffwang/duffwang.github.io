@@ -16,7 +16,7 @@ I divide the dataset in half. I will use **1/1/08-12/31/09** as my training set 
 
 ### Technical Indicators
 
-Technical analysis is a strategy where we use patterns in past prices to try and predict future prices. I will begin by looking at a few basic technical indicators and see how effective they are in on the in-sample and out-of-sample datasets.
+Technical analysis is a strategy where we use patterns in past prices to try and predict future prices. At the end of this post, I'll go over some reasons why this is near impossible to do in reality. But for education's sake, I will begin by looking at a few basic technical indicators and see how effective they are in on the in-sample and out-of-sample datasets.
 
 To begin, I load required Python packages and read in the end of day stock data using the *pandas* DataFrame structure, subsetted for the date period of interest.
 
@@ -160,6 +160,7 @@ Once again I show this indicator on the first two months of data. The actual ind
     ax.set_ylabel('Stock Price')
     x_axis = data.index.get_level_values(0)
     ax.fill_between(x_axis, max_donchian, min_donchian, color='grey')
+    plt.show()
 ```
 
 <img src="/img/t3.png" width="700px"/>
