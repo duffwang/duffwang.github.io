@@ -24,7 +24,7 @@ Due to the large number of data points in the Phishing dataset (over 10k), I ran
 
 The second dataset I use is the [Wine Quality Data Set](https://archive.ics.uci.edu/ml/datasets/wine+quality) also found on the UCI Machine Learning Repository. 
 	
-It is interesting because a common debate about wine quality is whether it can be predicted by quantifiable attributes or is mostly subjective; there may be a natural limit to how well supervised learning can do as a result. 
+It is interesting because a common debate about wine quality is whether it can be predicted by quantifiable attributes or is mostly subjective.
 
 I one hot encode this multi-class problem into a binary one conditioned on whether wine quality, as measured by the scale used in the dataset, is greater than 6. Our data is slightly imbalanced, with a **2604 : 1314 true/false count** (3918 data points).
 
