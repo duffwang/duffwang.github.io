@@ -167,12 +167,24 @@ Once again I show this indicator on the first two months of data. The actual ind
 
 ### Predicting the Future
 
-Now that I have explained the idea and code behind these three technical indicators, I want to try to train them on the training data. I will do by using an ensemble learner called a BagLearner. 
+Now that I have explained the idea and code behind these three technical indicators, I want to try to train them on the training data. I will do by using an ensemble learner called a Random Forest. 
 
-For the purposes of this post, we'll assume we can take at most a long position of 1000 shares or a short position of -1000 shares.
+**WORK IN PROGRESS**
 
-### Can we beat the market?
+#### Random Tree 
 
+#### Random Forest 
 
+#### Simulating a Market
 
+For the purposes of this post, we'll assume we can take at most a long position of 1000 shares or a short position of -1000 shares on any given day.
 
+#### Putting it all together: Training and Testing our Learner
+
+### Can we beat the market with technical analysis?
+
+The short answer is no. 
+
+The long answer is that maybe you can beat the market, for brief periods of time, if you have teams of PhDs working on it full time. Renaissance Technologies is considered one of the best hedge funds in the world, and does exactly that.
+
+To understand why it is difficult or potentially impossible to beat the market, I will first explain the ideas behind the Efficient Market Hypothesis and then explain some of the human cognitive biases which many retail traders fall prey to.
