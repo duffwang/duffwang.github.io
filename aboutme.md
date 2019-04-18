@@ -2,9 +2,8 @@
 layout: page
 title: About me
 subtitle: Quantitative trader, data enthusiast
+image: /img/profile.jpg
 ---
-
-<img src="/img/profile.jpg" width="250px"/>
 
 ## About Me
 
