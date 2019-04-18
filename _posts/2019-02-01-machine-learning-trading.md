@@ -169,7 +169,7 @@ Once again I show this indicator on the first two months of data. The actual ind
 
 Now that I have explained the idea and code behind these three technical indicators, I want to try to use them to predict future prices. I will do so by using an ensemble learner called a Random Forest. 
 
->>>>>**WORK IN PROGRESS**<<<<<<
+>>>>>**WORK IN PROGRESS**
 
 #### Random Tree 
 
