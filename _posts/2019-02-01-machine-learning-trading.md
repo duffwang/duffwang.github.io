@@ -6,4 +6,8 @@ tags: [machine learning, finance, data science, python]
 image: /img/3.png
 ---
 
-(placeholder)
+In this blog post, I go over some basic technical indicators one could use, show how to implement a reinfocement learner using these indicators, and then explain why it's so hard to beat the market.
+
+### Dataset
+
+(work in progress!)
