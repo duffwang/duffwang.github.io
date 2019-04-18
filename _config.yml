@@ -33,7 +33,7 @@ navbar-links:
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
-title-img: /img/market.png
+#title-img: /img/market.png
 
 # --- Background colour/image options --- #
 
@@ -164,8 +164,6 @@ defaults:
     values:
       layout: "page"
       show-avatar: true
-
-show-avatar: false
 
 # Use tags index page and make tags on each post clickable
 link-tags: true
