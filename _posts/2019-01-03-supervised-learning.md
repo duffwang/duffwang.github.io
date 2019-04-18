@@ -12,7 +12,7 @@ I compare two publically available datasets with different characteristics to de
 
 ### Code
 
-All code used for this assignment, including data cleaning and plot generation, can be found on my GitHub [here](https://github.com/duffwang/SupervisedLearning). This blog post will concentrate on analysis rather than coding.
+All code used for this post, including data cleaning and plot generation, can be found on my GitHub [here](https://github.com/duffwang/SupervisedLearning). This blog post will concentrate on analysis rather than coding.
 
 ### Datasets:
 
