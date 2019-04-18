@@ -1,12 +1,12 @@
 ---
 layout: post
 title: Machine Learning and Markets
-subtitle: Stock Trading using Reinforcement Learning in Python
-tags: [machine learning, finance, data science, python]
+subtitle: Full Tutorial on Trading using an Ensemble Random Forest Learner in Python
+tags: [machine learning, finance, data science, python, supervised learning]
 image: /img/3.png
 ---
 
-In this blog post, I go over some basic technical indicators to use on market data, show how to implement a reinfocement learner in Python to predict future prices, and explain why it's nearly impossible to beat the market.
+In this blog post, I go over some basic technical indicators to use on market data, show how to implement an ensemble learner in Python to predict future prices, and explain why it's nearly impossible to beat the market.
 
 ### Dataset
 
@@ -16,7 +16,7 @@ I divide the dataset in half. I will use **1/1/08-12/31/09** as my training set 
 
 ### Technical Indicators
 
-Technical analysis is a strategy where we use patterns in past prices to try and predict future prices. At the end of this post, I'll go over some reasons why this is near impossible to do in reality. But for education's sake, I will begin by looking at a few basic technical indicators and see how effective they are in on the in-sample and out-of-sample datasets.
+Technical analysis is a strategy where we use patterns in past prices to try and predict future prices. At the end of this post, I'll go over some reasons why this is near impossible to do in reality. But for educational purposes, I will begin by looking at a few basic technical indicators and see how effective they are in on the in-sample and out-of-sample datasets.
 
 To begin, I load required Python packages and read in the end of day stock data using the *pandas* DataFrame structure, subsetted for the date period of interest.
 
@@ -167,6 +167,12 @@ Once again I show this indicator on the first two months of data. The actual ind
 
 ### Predicting the Future
 
-Now that I have explained the idea and code behind these three technical indicators, I want to try to train them on the training data. I will do this manually by tweaking parameters for now, and later in this post I'll use a reinforcement learner to see how it compares.
+Now that I have explained the idea and code behind these three technical indicators, I want to try to train them on the training data. I will do by using an ensemble learner called a BagLearner. 
+
+For the purposes of this post, we'll assume we can take at most a long position of 1000 shares or a short position of -1000 shares.
+
+### Can we beat the market?
+
+
 
 
