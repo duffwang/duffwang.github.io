@@ -342,12 +342,8 @@ The Random Forest learner does surprisingly well even in the out of sample perio
 
 ### Can we beat the market with technical analysis?
 
-The short answer is almost certainly no. 
+The short answer is almost surely not. 
 
-The long answer is that maybe you can beat the market, for brief periods of time, if you have teams of PhDs working on it full time. Renaissance Technologies is considered one of the best hedge funds that employs technical strategies, and does exactly that. But you or I, trading casually in our free time, are almost certain to lose against the market.
+The long answer is that you can probably can beat the market, for brief periods of time, if you have teams of smart people working on it full time. For example, famous hedge funds like Renaissance Technologies employ technical strategies, and do exactly that. But you or I are almost certain to lose against the market.
 
-To understand why it is difficult or potentially impossible to beat the market, I will first explain the ideas behind the Efficient Market Hypothesis and then explain some of the human cognitive biases which many retail traders fall prey to.
 
-#### Efficient Markets
-
-#### Cognitive Biases and Trading
