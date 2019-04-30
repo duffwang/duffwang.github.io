@@ -338,12 +338,14 @@ As you can see, our strategy learner performs very well in the in-sample period,
 
 <img src="/img/t7.png" width="700px"/>
 
-The Random Forest learner does surprisingly well even in the out of sample period. Meanwhile, my manual strategy is unable to beat the benchmark. This shows the signals we used did not significantly degrade in the out-of-sample period. Does this mean we can make as much money as we want now? Probably not, and I'll explain why.
+The Random Forest learner does surprisingly well even in the out of sample period. Meanwhile, my manual strategy is unable to beat the benchmark. This shows the signals we used did not significantly degrade in the out-of-sample period.
 
-### Can we beat the market with technical analysis?
+### Remarks
 
-The short answer is almost surely not. 
+I hope this demonstration helps you understand how you might use machine learning to predict prices in the stock market. 
 
-The long answer is that you can probably can beat the market, for brief periods of time, if you have teams of smart people working on it full time. For example, famous hedge funds like Renaissance Technologies employ technical strategies, and do exactly that. But you or I are almost certain to lose against the market.
+However, keep in mind this is an educational exercise. I would caution against trading with real money using these techniques.
 
+In general, it is difficult if not impossible to beat the market. A typical retail investor stands little chance against more sophisticated investors, and our cognitive biases make us over-confident in our ability to find patterns in noise. In fact, if the efficient market hypothesis is true, it is impossible to predict future prices with technical analysis.
 
+Even if the efficient market hypothesis is not true and one were to find a real signal, a retail investor has to contend with unfairly high trading commissions, slippage, and execution costs that would wipe out any potential positive expected value. Trading with technical analysis is a zero sum game and the odds are rigged against you!

@@ -13,7 +13,3 @@ I am a California native who likes markets, data, and programming. I am currentl
 
 Feel free to contact me by email (see icon on bottom of page), and check out my [GitHub](https://github.com/duffwang) or [LinkedIn](https://linkedin.com/in/jwang2013).
 
-## Education
-
-B.S.E. Chemical and Biological Engineering  
-Princeton University, June 2013
