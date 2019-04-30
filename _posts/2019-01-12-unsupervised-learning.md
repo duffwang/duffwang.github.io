@@ -26,7 +26,7 @@ The second dataset I use is the [Wine Quality Data Set](https://archive.ics.uci.
 	
 It is interesting because a common debate about wine quality is whether it can be predicted by quantifiable attributes or is mostly subjective.
 
-I one hot encode this multi-class problem into a binary one conditioned on whether wine quality, as measured by the scale used in the dataset, is greater than 6. Our data is slightly imbalanced, with a **2604 : 1314 true/false count** (3918 data points).
+Our data is slightly imbalanced, with a **2604 : 1314 true/false count** (3918 data points).
 
 ### Experiment 1: Clustering Algorithms
 
