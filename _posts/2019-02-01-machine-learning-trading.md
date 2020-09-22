@@ -6,7 +6,7 @@ tags: [machine learning, finance, python, supervised learning, random forest]
 image: /img/3.png
 ---
 
-In this blog post, I go over some basic technical indicators to use on market data, show how to implement an ensemble learner in Python to predict future prices, and explain why it's nearly impossible to beat the market.
+In this blog post, I go over some basic technical indicators to use on market data, show how to implement an ensemble learner in Python to predict future prices.
 
 ### Dataset
 
@@ -343,9 +343,3 @@ The Random Forest learner does surprisingly well even in the out of sample perio
 ### Remarks
 
 I hope this demonstration helps you understand how you might use machine learning to predict prices in the stock market. 
-
-However, keep in mind this is an educational exercise. I would caution against trading with real money using these techniques.
-
-In general, it is difficult if not impossible to beat the market. A typical retail investor stands little chance against more sophisticated investors, and our cognitive biases make us over-confident in our ability to find patterns in noise. In fact, if the efficient market hypothesis is true, it is impossible to predict future prices with technical analysis.
-
-Even if the efficient market hypothesis is not true and one were to find a real signal, a retail investor has to contend with unfairly high trading commissions, slippage, and execution costs that would wipe out any potential positive expected value. Trading with technical analysis is a zero sum game and the odds are rigged against you!
